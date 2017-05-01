@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+        rel="stylesheet" type="text/css">
+
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <script src="https://npmcdn.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
+
+    <style>
+        .tabs .tab__item {
+            color: #000;
+        }
+        
+        .tabs .tab__item--active {
+            color: #448aff;
+        }
+        
+        .tabs__tabs {
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <v-tabs>
+            <v-tab-item ripple slot="activators" router exact href="/page1">Page 1</v-tab-item>
+            <v-tab-item ripple slot="activators" router exact href="/page2">Page 2</v-tab-item>
+        </v-tabs>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const Page1 = { template: '<div>Page1</div>' }
+        const Page2 = { template: '<div>Page2</div>' }
+
+        const router = new VueRouter({
+            // mode: 'history',
+            routes: [
+                { path: '/page1', component: Page1 },
+                { path: '/page2', component: Page2 }
+            ]
+        })
+
+        new Vue({
+            router,
+            el: '#app',
+            data: {
+                msg: 'Hello World'
+            }
+        })
+    </script>
+
+</body>
+
+</html>
